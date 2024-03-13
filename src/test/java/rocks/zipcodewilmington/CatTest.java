@@ -2,7 +2,9 @@ package rocks.zipcodewilmington;
 
 import org.junit.Assert;
 import org.junit.Test;
+import rocks.zipcodewilmington.animals.Animal;
 import rocks.zipcodewilmington.animals.Cat;
+import rocks.zipcodewilmington.animals.Mammal;
 
 import java.util.Date;
 
@@ -75,12 +77,40 @@ public class CatTest {
 
     }
     // TODO - Create tests for `void eat(Food food)`
+    @Test
     public void eat(){
         //Given
-        Food actual = new Food();
-
+        int expected = 1;
+        int actual = 0;
         //When
         Cat cat = new Cat();
+        Food food = new Food();
+        cat.eat(food);
+        actual = cat.getNumberOfMealsEaten();
+        //Then
+        Assert.assertEquals(expected, actual);
+    }
+    @Test
+    public void idTest(){
+        //Given
+       int expected =1;
+
+        //When
+        Cat cat = new Cat(null, null,expected);
+        int actual = cat.getId();
+        //Then
+        Assert.assertEquals(actual,cat.getName());
+    }
+    @Test
+    public void animalTest(){
+        Cat cat =  new Cat();
+        Assert.assertTrue(cat instanceof Animal);
+
+    }
+    @Test
+    public void mammalTest(){
+        Cat cat =  new Cat();
+        Assert.assertTrue(cat instanceof Mammal);
 
     }
 
